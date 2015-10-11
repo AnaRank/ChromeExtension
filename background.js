@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(function() {
   
 
 
-	var opinions = ["Up", "Down", "Steady"];
+	var opinions = ['Up', 'Down', '-', 'Steady', 'Positive outlook', 'Negative outlook'];
 
 	// Selected text
 	var opiniontext = [
@@ -24,13 +24,25 @@ chrome.runtime.onInstalled.addListener(function() {
 	for	(i = 0; i < opiniontext.length; i++) {
 		for	(y = 0; y < opinions.length; y++) {
 
-			var id = chrome.contextMenus.create({"title": opinions[y], 
-												"contexts":["selection"],
-		                                        "id": opiniontext[i].name + '_' + opinions[y],
-		                                        "parentId": opiniontext[i].name
-		                                     });
+			if (opinions[y] == '-') {
+
+				var id = chrome.contextMenus.create({"type": "separator", 
+													"contexts":["selection"],
+			                                        "id": opiniontext[i].name + '_' + opinions[y],
+			                                        "parentId": opiniontext[i].name
+			                                     });
+			}
+			else {
+				var id = chrome.contextMenus.create({"title": opinions[y], 
+													"contexts":["selection"],
+			                                        "id": opiniontext[i].name + '_' + opinions[y],
+			                                        "parentId": opiniontext[i].name
+			                                     });
+			}
 		}
 	}
+
+	// patrolled ?
 	  
 	// Just add url
 	var url = chrome.contextMenus.create({"title": "Anarank add url", "contexts":["page"],
