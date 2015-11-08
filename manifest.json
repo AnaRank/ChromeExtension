@@ -1,11 +1,14 @@
 {
   "name": "Anarank add",
-  "description": "sample",
+  "description": "Add sources to AnaRank",
   "version": "0.0.1",
   "permissions": ["contextMenus"],
   "background": {
     "persistent": false,
     "scripts": ["background.js"]
   },
-  "manifest_version": 2
+  "manifest_version": 2,
+  "icons": { 	"16": "icon16.png",
+				"48": "icon48.png",
+				"128": "icon128.png" }
 }
